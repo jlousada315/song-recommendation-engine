@@ -3,14 +3,7 @@ This repo contains the framework for a Song Recommendation Engine based on Spoti
 
 This project was inspired by code found in the [Deep Learning Cookbook](https://www.oreilly.com/library/view/deep-learning-cookbook/9781491995839/), by Douwe Osinga. 
 
-# Steps 
+# Examples from Web Application 
 
-## 1. Collect Data
+<img src="images/merge_from_ofoct.jpg?raw=true"/>
 
-## 2. Create sqlite DataBase
-
-## 3. Train Word2Vec
-
-## 4. Find Similar Songs
-
-## 5. Deploy Web Applications
