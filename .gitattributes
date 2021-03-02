@@ -7,3 +7,4 @@ data/songs.db filter=lfs diff=lfs merge=lfs -text
 songs.word2vec filter=lfs diff=lfs merge=lfs -text
 data/songs_ids1.txt filter=lfs diff=lfs merge=lfs -text
 *.gz filter=lfs diff=lfs merge=lfs -text
+*.bin filter=lfs diff=lfs merge=lfs -text
