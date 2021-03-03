@@ -9,7 +9,7 @@ from gensim.models.keyedvectors import KeyedVectors
 
 @st.cache
 def load_my_model():
-    return KeyedVectors.load_word2vec_format('model.bin', binary=True, encoding="utf-8")
+    return KeyedVectors.load('model.bin')
 
 
 class WebApp:
@@ -50,8 +50,8 @@ class WebApp:
         st.set_option('deprecation.showfileUploaderEncoding', False)
         st.header("Song Recommendation Engine.")
 
-        st.write('Embeddings Visualization with T-SNE')
-        self.visualize_embeddings()
+        #st.write('Embeddings Visualization with T-SNE')
+        #self.visualize_embeddings()
 
         # Input Selection
         song = st.text_input('Name a song')
