@@ -4,12 +4,12 @@ import gensim
 from operator import itemgetter
 import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE
-from gensim.models import KeyedVectors, Word2Vec
+from gensim.models import KeyedVectors
 
 
 @st.cache
 def load_my_model():
-    return Word2Vec.load('model.bin')
+    return KeyedVectors.load_word2vec_format('songs', binary=True)
 
 
 class WebApp:
@@ -24,9 +24,9 @@ class WebApp:
         res = sorted((x + (self.model.wv.vocab[x[0]].count,)
                       for x in c.fetchall() if x[0] in self.model.wv.vocab),
                      key=itemgetter(-1), reverse=True)
-
+    
         return [*res][:limit]
-
+    
     def suggest_songs(self, song_id):
         c = self.conn.cursor()
         similar = dict(self.model.wv.most_similar([song_id]))
@@ -36,27 +36,27 @@ class WebApp:
                      key=itemgetter(-1),
                      reverse=True)
         return [*res]
-
+    
     def visualize_embeddings(self):
         X = self.model.wv[self.model.wv.vocab]
-
+    
         tsne = TSNE(n_components=2)
         X_tsne = tsne.fit_transform(X)
-
+    
         graph = plt.scatter(X_tsne[:, 0], X_tsne[:, 1])
         st.write(graph)
-
+    
     def run(self):
         st.set_option('deprecation.showfileUploaderEncoding', False)
         st.header("Song Recommendation Engine.")
-
+    
         #st.write('Embeddings Visualization with T-SNE')
         #self.visualize_embeddings()
-
+    
         # Input Selection
         song = st.text_input('Name a song')
         st.write('Song selected:', song)
-
+    
         if st.button('Get Recomendations!'):
             song_id = self.find_song(song)[0][0]
             for t in self.suggest_songs(song_id):
