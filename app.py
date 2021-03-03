@@ -9,7 +9,7 @@ from gensim.models.keyedvectors import KeyedVectors
 
 @st.cache
 def load_my_model():
-    return KeyedVectors.load_word2vec_format('model.bin', binary=True)
+    return KeyedVectors.load_word2vec_format('model.bin', binary=True, encoding="utf-8")
 
 
 class WebApp:
