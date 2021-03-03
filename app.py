@@ -9,7 +9,7 @@ from gensim.models import KeyedVectors
 
 @st.cache
 def load_my_model():
-    return KeyedVectors.load_word2vec_format('songs', binary=True)
+    return KeyedVectors.load_word2vec_format('model.bin.gz', binary=True)
 
 
 class WebApp:
