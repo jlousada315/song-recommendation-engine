@@ -7,9 +7,11 @@ from sklearn.manifold import TSNE
 from gensim.models import KeyedVectors
 
 
-@st.cache
+@st.cache(allow_output_mutation=True)
 def load_my_model():
-    return KeyedVectors.load_word2vec_format('model.bin.gz', binary=True)
+    with st.spinner('Downloading word2vec model... please hold...'):
+	model = KeyedVectors.load_word2vec_format('model'), binary=True)    
+    return model
 
 
 class WebApp:
