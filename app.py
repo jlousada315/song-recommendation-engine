@@ -4,12 +4,12 @@ import gensim
 from operator import itemgetter
 import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE
-from gensim.models import KeyedVectors
+from gensim.models import KeyedVectors, Word2Vec
 
 
 @st.cache
 def load_my_model():
-    return KeyedVectors.load_word2vec_format('model.bin', binary=True)
+    return Word2Vec.load('model.bin')
 
 
 class WebApp:
